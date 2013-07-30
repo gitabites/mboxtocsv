@@ -6,20 +6,17 @@ infile = open(sys.argv[1])
 outfile = open(sys.argv[2], 'w')
 writer = csv.writer(outfile)
 
-for line in infile:	
-  splits = line.split(",")
-  newline = []
-  newline.append(splits[0])
-  print newline
-  newline.append(splits[1])
-  print newline
-  newline.append(splits[2])
-  print newline
-  if len(splits)> 3:
-  	newline.append(splits[3])	
-  else:
-  	newline.append("None")	
-  writer.writerow(newline)
+for line in infile:
+ splits = line.split(",")
+ newline = []
+ if len(splits) == 4:
+   for i in range(0,3):
+     newline.append(splits[i])
+ else:
+         newline.append("None")
+ print newline
+ writer.writerow(newline)
+
 
 infile.close()
 outfile.close()	
